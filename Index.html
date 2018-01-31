@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>MakanSehat</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row" style="margin:auto;">
+        <h1>MakanSehat Food's Menu</h1>
+        <p><small>This form is for a la carte request</small></p>
+      </div>
+      <div class="row">
+        <div class="container-fluid">
+          <table class="table table-dark">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Menu</th>
+                <th>Price/pcs</th>
+                <th>Amount</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Es Kelapa</td>
+                <td>Rp. 15000</td>
+                <td>
+                  <button type="button" name="button" onclick="addKelapa()">+</button>
+                  <span id="am1" onclick="changeText(this)">0</span>
+                  <button type="button" name="button" onclick="subKelapa()">-</button>
+                </td>
+                <td>
+                  <p>Rp. <span id="tp1">0</span></p>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Sate Kambing</td>
+                <td>Rp. 4000</td>
+                <td>
+                  <button type="button" name="button" onclick="addKambing()">+</button>
+                  <span id="am2">0</span>
+                  <button type="button" name="button" onclick="subKambing()">-</button>
+                </td>
+                <td>
+                  <p>Rp. <span id="tp2" onchange="totalPrice()">0</span></p>
+                </td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Sate Sapi</td>
+                <td>Rp. 4000</td>
+                <td>
+                  <button type="button" name="button" onclick="addSapi()">+</button>
+                  <span id="am3">0</span>
+                  <button type="button" name="button" onclick="subSapi()">-</button>
+                </td>
+                <td>
+                  <p>Rp. <span id="tp3" onchange="totalPrice()">0</span></p>
+                </td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Ayam Bakar</td>
+                <td>Rp. 20000</td>
+                <td>
+                  <button type="button" name="button" onclick="addAyam()">+</button>
+                  <span id="am4">0</span>
+                  <button type="button" name="button" onclick="subAyam()">-</button>
+                </td>
+                <td>
+                  <p>Rp. <span id="tp4">0</span></p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="4">Total</td>
+                <td >Rp. <span id="totalp">0</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <button type="button" name="button" onclick="invoice()">Submit</button>
+        </div>
+        <div class="row">
+          <div id="invoices">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    -->
+    <script type="text/javascript">
+      var amKelapa = 0;
+      var amKambing = 0;
+      var amSapi = 0;
+      var amAyam = 0;
+      var total = 0;
+
+      function addKelapa(){
+        amKelapa+=1;
+        document.getElementById('am1').innerHTML = amKelapa;
+        document.getElementById('tp1').innerHTML = amKelapa*15000;
+        total +=15000;
+        totalPrice();
+      }
+      function subKelapa(){
+        if (amKelapa>0) {
+          amKelapa-=1;
+          document.getElementById('am1').innerHTML = amKelapa;
+          document.getElementById('tp1').innerHTML = amKelapa*15000;
+          total -=15000;
+          totalPrice();
+        }
+      }
+
+      function addKambing(){
+        amKambing+=1;
+        document.getElementById('am2').innerHTML = amKambing;
+        document.getElementById('tp2').innerHTML = amKambing*4000;
+        total +=4000;
+        totalPrice();
+      }
+      function subKambing(){
+        if (amKambing>0) {
+          amKambing-=1;
+          document.getElementById('am2').innerHTML = amKambing;
+          document.getElementById('tp2').innerHTML = amKambing*4000;
+          total -=4000;
+          totalPrice();
+        }
+      }
+
+      function addSapi(){
+        amSapi+=1;
+        document.getElementById('am3').innerHTML = amSapi;
+        document.getElementById('tp3').innerHTML = amSapi*4000;
+        total +=4000;
+        totalPrice();
+      }
+      function subSapi(){
+        if (amSapi>0) {
+          amSapi-=1;
+          document.getElementById('am3').innerHTML = amSapi;
+          document.getElementById('tp3').innerHTML = amSapi*4000;
+          total -=4000;
+          totalPrice();
+        }
+      }
+
+      function addAyam(){
+        amAyam+=1;
+        document.getElementById('am4').innerHTML = amAyam;
+        document.getElementById('tp4').innerHTML = amAyam*20000;
+        total +=20000;
+        totalPrice();
+      }
+      function subAyam(){
+        if (amAyam>0) {
+          amAyam-=1;
+          document.getElementById('am4').innerHTML = amAyam;
+          document.getElementById('tp4').innerHTML = amAyam*20000;
+          total -=20000;
+          totalPrice();
+        }
+      }
+
+      function totalPrice(){
+        //total = (amKelapa*15000)+(amSapi*4000)+(amSapi*5000)+(amAyam*20000);
+        document.getElementById('totalp').innerHTML = total;
+      }
+
+      function invoice(){
+        document.getElementById('invoices').innerHTML = "<h1>Invoice</h1>"+"<p>Es Kelapa "+amKelapa+" "+amKelapa*15000+"</p>"+"<p>Sate Kambing "+amKambing+" "+amSapi*4000+"</p>"+"<p>Sate Sapi "+amSapi+" "+amSapi*4000+"</p>"+"<p>Ayam Bakar "+amAyam+" "+amAyam*4000+"</p>"+"<p>Total Harga  "+total+"</p>";
+      }
+    </script>
+  </body>
+</html>
