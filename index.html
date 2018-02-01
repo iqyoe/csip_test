@@ -86,18 +86,60 @@
           <button type="button" name="button" onclick="invoice()">Submit</button>
         </div>
         <div class="row">
-          <div id="invoices">
+          <div class="container-fluid">
+            <div id="invoices">
+            </div>
+            <table class="table table-dark">
+              <tbody>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Menu</th>
+                    <th>Amount</th>
+                    <th><button type="button" name="button" onclick="totalS()">Check Total</button></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Es Kelapa</td>
+                    <td><span id="tkel">0</span></td>
+                    <td>
+                      <p>Rp. <span id="thkel">0</span></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Sate Kambing</td>
+                    <td><span id="tkam">0</span></td>
+                    <td>
+                      <p>Rp. <span id="thkam">0</span></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Sate Sapi</td>
+                    <td><span id="tsap">0</span></td>
+                    <td>
+                      <p>Rp. <span id="thsap">0</span></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>Ayam Bakar</td>
+                    <td><span id="taya">0</span></td>
+                    <td>
+                      <p>Rp. <span id="thaya">0</span></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="3">Harga Total Invoice</td>
+                    <td>Rp. <span id="totalsemua">0</span></td>
+                  </tr>
+                </tbody>
+            </table>
           </div>
-          <table class="table table-dark">
-            <tbody>
-              <tr>
-                <td>Harga Total Invoice</td>
-                <td colspan="3"><button type="button" name="button" onclick="totalS()">Total</button></td>
-                <td>Rp. <span id="totalsemua">0</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+          </div>
       </div>
     </div>
 
@@ -184,6 +226,7 @@
       }
 
       function totalPrice(){
+        /*Made by Muhammad Iqbal 001201500028*/
         //total = (amKelapa*15000)+(amSapi*4000)+(amSapi*5000)+(amAyam*20000);
         document.getElementById('totalp').innerHTML = total;
       }
@@ -192,6 +235,7 @@
         /*Made by Muhammad Iqbal 001201500028*/
         /*document.getElementById('invoices').innerHTML = "<h1>Invoice</h1>"+"<p>Es Kelapa "+amKelapa+" "+amKelapa*15000+"</p>"+"<p>Sate Kambing "+amKambing+" "+amSapi*4000+"</p>"+"<p>Sate Sapi "+amSapi+" "+amSapi*4000+"</p>"+"<p>Ayam Bakar "+amAyam+" "+amAyam*4000+"</p>"+"<p>Total Harga  "+total+"</p>";*/
         var h4 = document.createElement("h4");
+        h4.style.color="blue";
         tinvo+=1;
         var jmlinvo = document.createTextNode("Invoice "+tinvo);
         h4.appendChild(jmlinvo);
@@ -233,6 +277,15 @@
       }
 
       function totalS(){
+        /*Made by Muhammad Iqbal 001201500028*/
+        document.getElementById('tkel').innerHTML = invo[0];
+        document.getElementById('tkam').innerHTML = invo[1];
+        document.getElementById('tsap').innerHTML = invo[2];
+        document.getElementById('taya').innerHTML = invo[3];
+        document.getElementById('thkel').innerHTML = invo[0]*15000;
+        document.getElementById('thkam').innerHTML = invo[1]*4000;
+        document.getElementById('thsap').innerHTML = invo[2]*4000;
+        document.getElementById('thayam').innerHTML = invo[3]*20000;
         document.getElementById('totalsemua').innerHTML = invo[4];
       }
       /*Made by Muhammad Iqbal 001201500028*/
