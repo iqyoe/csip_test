@@ -103,6 +103,8 @@
       var amSapi = 0;
       var amAyam = 0;
       var total = 0;
+      var invo = [];
+      var tinvo = 0;
 
       function addKelapa(){
         amKelapa+=1;
@@ -178,7 +180,40 @@
       }
 
       function invoice(){
-        document.getElementById('invoices').innerHTML = "<h1>Invoice</h1>"+"<p>Es Kelapa "+amKelapa+" "+amKelapa*15000+"</p>"+"<p>Sate Kambing "+amKambing+" "+amSapi*4000+"</p>"+"<p>Sate Sapi "+amSapi+" "+amSapi*4000+"</p>"+"<p>Ayam Bakar "+amAyam+" "+amAyam*4000+"</p>"+"<p>Total Harga  "+total+"</p>";
+        /*document.getElementById('invoices').innerHTML = "<h1>Invoice</h1>"+"<p>Es Kelapa "+amKelapa+" "+amKelapa*15000+"</p>"+"<p>Sate Kambing "+amKambing+" "+amSapi*4000+"</p>"+"<p>Sate Sapi "+amSapi+" "+amSapi*4000+"</p>"+"<p>Ayam Bakar "+amAyam+" "+amAyam*4000+"</p>"+"<p>Total Harga  "+total+"</p>";*/
+        var h4 = document.createElement("h4");
+        tinvo+=1;
+        var jmlinvo = document.createTextNode("Invoice "+tinvo);
+        h4.appendChild(jmlinvo);
+        document.getElementById("invoices").appendChild(h4);
+        if (amKelapa>0) {
+          var x = document.createElement("p");
+          var kelapa = document.createTextNode("Ayam: "+amKelapa+" "+amKelapa*15000);
+          x.appendChild(kelapa);
+          document.getElementById("invoices").appendChild(x);
+        }
+        if (amKambing>0) {
+          var x = document.createElement("p");
+          var kambing = document.createTextNode("Ayam: "+amKambing+" "+amKambing*4000);
+          x.appendChild(kambing);
+          document.getElementById("invoices").appendChild(x);
+        }
+        if (amSapi>0) {
+          var x = document.createElement("p");
+          var sapi = document.createTextNode("Ayam: "+amSapi+" "+amSapi*4000);
+          x.appendChild(sapi);
+          document.getElementById("invoices").appendChild(x);
+        }
+        if (amAyam>0) {
+          var x = document.createElement("p");
+          var ayam = document.createTextNode("Ayam: "+amAyam+" "+amAyam*20000);
+          x.appendChild(ayam);
+          document.getElementById("invoices").appendChild(x);
+        }
+        var p2 = document.createElement("p");
+        var tot = document.createTextNode("Harga total: "+total);
+        p2.appendChild(tot);
+        document.getElementById("invoices").appendChild(p2);
       }
     </script>
   </body>
