@@ -87,7 +87,20 @@
         </div>
         <div class="row">
           <div id="invoices">
-
+          </div>
+          <table class="table table-dark">
+            <tbody>
+              <tr>
+                <td>Harga Total Invoice</td>
+                <td colspan="3"><button type="button" name="button" onclick="totalS()">Total</button></td>
+                <td>Rp. <span id="totalsemua">0</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row">
+          <div id="container-fluid">
+            <
           </div>
         </div>
       </div>
@@ -103,7 +116,7 @@
       var amSapi = 0;
       var amAyam = 0;
       var total = 0;
-      var invo = [];
+      var invo = [0,0,0,0,0];
       var tinvo = 0;
 
       function addKelapa(){
@@ -191,29 +204,39 @@
           var kelapa = document.createTextNode("Ayam: "+amKelapa+" "+amKelapa*15000);
           x.appendChild(kelapa);
           document.getElementById("invoices").appendChild(x);
+          invo[0]+=amKelapa;
         }
         if (amKambing>0) {
           var x = document.createElement("p");
           var kambing = document.createTextNode("Ayam: "+amKambing+" "+amKambing*4000);
           x.appendChild(kambing);
           document.getElementById("invoices").appendChild(x);
+          invo[1]+=amKambing;
         }
         if (amSapi>0) {
           var x = document.createElement("p");
           var sapi = document.createTextNode("Ayam: "+amSapi+" "+amSapi*4000);
           x.appendChild(sapi);
           document.getElementById("invoices").appendChild(x);
+          invo[2]+=amSapi;
         }
         if (amAyam>0) {
           var x = document.createElement("p");
           var ayam = document.createTextNode("Ayam: "+amAyam+" "+amAyam*20000);
           x.appendChild(ayam);
           document.getElementById("invoices").appendChild(x);
+          invo[3]+=amAyam;
         }
         var p2 = document.createElement("p");
         var tot = document.createTextNode("Harga total: "+total);
         p2.appendChild(tot);
         document.getElementById("invoices").appendChild(p2);
+        invo[4]+=total;
+
+      }
+
+      function totalS(){
+        document.getElementById('totalsemua').innerHTML = invo[4];
       }
     </script>
   </body>
