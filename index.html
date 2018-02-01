@@ -96,7 +96,7 @@
                     <th>#</th>
                     <th>Menu</th>
                     <th>Amount</th>
-                    <th><button type="button" name="button" onclick="totalS()">Check Total</button></th>
+                    <th>Total</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -133,7 +133,7 @@
                     </td>
                   </tr>
                   <tr>
-                    <td colspan="3">Harga Total Invoice</td>
+                    <td colspan="3">Total Invoice Price</td>
                     <td>Rp. <span id="totalsemua">0</span></td>
                   </tr>
                 </tbody>
@@ -273,7 +273,7 @@
         p2.appendChild(tot);
         document.getElementById("invoices").appendChild(p2);
         invo[4]+=total;
-
+        totalS();
       }
 
       function totalS(){
