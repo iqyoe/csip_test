@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Muhammad Iqbal Lukman | Mid Test</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        .yellow{
+            background-color: #FBC02D;
+            color: black;
+        }
+        .green{
+            background-color: #2E7D32;
+        }
+    </style>
+</head>
+<body onload="checkCookie()">
+    <div class="container">
+        <h1 style="margin-left: 10em;">Mid Test</h1>
+        <h3>Muhammad Iqbal Lukman</h3>
+        <h4>001 2015 00028</h4>
+        <p id="date">Default Date: </p>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col" rowspan="2" style="padding-bottom:1.5em;padding-left:5em;"><h3>refresh</h3></th>
+                <th scope="col" id="res1" class="yellow">1000</th>
+                <th scope="col" id="res2" class="yellow">3000</th>
+                <th scope="col" id="res3" class="yellow">5000</th>
+                <th scope="col" id="res4" class="yellow">7000</th>
+                <th scope="col" rowspan="2">per Hour</th>
+                <th scope="col" rowspan="2">Action</th>
+                <th scope="col" rowspan="2">troops</th>
+              </tr>
+              <tr>
+                  <th>res1</th>
+                  <th>res2</th>
+                  <th>res3</th>
+                  <th>res4</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>res1</td>
+                <td>100</td>
+                <td>200</td>
+                <td>300</td>
+                <td>400</td>
+                <td class="green" id="a1">180</td>
+                <td><button class="btn btn-dark" onclick="phUp(1)">UP</button></td>                
+              </tr>
+
+              <tr>
+                <td>res2</td>
+                <td>200</td>
+                <td>200</td>
+                <td>200</td>
+                <td>200</td>
+                <td class="green" id="a2">180</td>
+                <td><button class="btn btn-dark" onclick="phUp(2)">UP</button></td>
+              </tr>
+
+              <tr>
+                <td>res3</td>
+                <td>300</td>
+                <td>200</td>
+                <td>100</td>
+                <td>300</td>
+                <td class="green" id="a3">180</td>
+                <td><button class="btn btn-dark" onclick="phUp(3)">UP</button></td>
+              </tr>
+
+              <tr>
+                <td>res4</td>
+                <td>400</td>
+                <td>300</td>
+                <td>200</td>
+                <td>100</td>
+                <td class="green" id="a4">180</td>
+                <td><button class="btn btn-dark" onclick="phUp(4)">UP</button></td>
+              </tr>
+
+              <tr>
+                <td>barrack</td>
+                <td>500</td>
+                <td>500</td>
+                <td>500</td>
+                <td>500</td>
+                <td class="green" id="a5">30</td>
+                <td><button class="btn btn-dark" onclick="phUp(5)">UP</button></td>
+                <td class="yellow">0</td>
+              </tr>
+              
+              <tr>
+                <td>stable</td>
+                <td>600</td>
+                <td>600</td>
+                <td>600</td>
+                <td>600</td>
+                <td class="green" id="a6">12</td>
+                <td><button class="btn btn-dark" onclick="phUp(6)">UP</button></td>
+                <td class="yellow">0</td>
+            </tr>
+              
+              <tr>
+                <td>nest</td>
+                <td>700</td>
+                <td>700</td>
+                <td>700</td>
+                <td>700</td>
+                <td class="green" id="a7">6</td>
+                <td><button class="btn btn-dark" onclick="phUp(7)">UP</button></td>
+                <td class="yellow">0</td>
+            </tr>
+
+            </tbody>
+          </table>
+    </div>
+<script src="js/jquery-slim.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    var cook = document.cookie;
+    var defmin = cook.split('midtime=');
+    var date = new Date();
+    var mn = date.getUTCMinutes();
+    
+    var r1 = 1000;
+    var r2 = 3000;
+    var r3 = 5000;
+    var r4 = 7000;
+
+    var ra1 = 180;
+    var ra2 = 180;
+    var ra3 = 180;
+    var ra4 = 180;
+    var ra5 = 30;
+    var ra6 = 12;
+    var ra7 = 6;
+
+    document.getElementById('date').innerHTML+=defmin[1];
+
+
+    function checkCookie(){
+        var dc = document.cookie;
+        var prefix = "midtime=";
+        var begin = dc.indexOf("; " + prefix);
+        if (begin == -1) {
+            begin = dc.indexOf(prefix);
+            if (begin != 0) document.cookie = "midtime="+mn+";";
+        }
+        startRes();
+    }
+
+    function startRes(){
+        var delta = mn - defmin[1];
+        r1 = r1+(delta*3);
+        r2 = r2+(delta*3);
+        r3 = r3+(delta*3);
+        r4 = r4+(delta*3);
+        
+        document.getElementById('res1').innerHTML = r1;
+        document.getElementById('res2').innerHTML = r2;
+        document.getElementById('res3').innerHTML = r3;
+        document.getElementById('res4').innerHTML = r4;
+    }
+
+    function phUp(n){
+        if(r1<100||r2<200||r3<300||r4<400){
+            document.getElementsByClassName('btn').disabled=true;
+        } else{
+        switch (n) {
+            case 1:
+            ra1*=2;
+            document.getElementById('a1').innerHTML = ra1;
+            break;
+            case 2:
+            ra2*=2;
+            document.getElementById('a2').innerHTML = ra2;
+            break;
+            case 3:
+            ra3*=2;
+            document.getElementById('a3').innerHTML = ra3;
+            break;
+            case 4:
+            ra4*=2;
+            document.getElementById('a4').innerHTML = ra4;
+            break;
+            case 5:
+            ra5*=2;
+            document.getElementById('a5').innerHTML = ra5;
+            break;
+            case 6:
+            ra6*=2;
+            document.getElementById('a6').innerHTML = ra6;
+            break;
+            case 7:
+            ra7*=2;
+            document.getElementById('a7').innerHTML = ra7;
+            break;
+        }
+        r1-=100;
+        r2-=200;
+        r3-=300;
+        r4-=400;
+        document.getElementById('res1').innerHTML = r1;
+        document.getElementById('res2').innerHTML = r2;
+        document.getElementById('res3').innerHTML = r3;
+        document.getElementById('res4').innerHTML = r4;
+        }
+    }
+
+</script>
+</body>
+</html>
