@@ -51,6 +51,16 @@
     
     <canvas id="canvasGame"></canvas>
     <script>
+    /*
+    This code is purely made by Muhammad Iqbal Lukman
+    Under MIT LICENSE Copyright
+    This program is made to complete my final test in CSIP
+
+    Muhammad Iqbal Lukman
+    001 2015 00028
+    President University
+    */
+    
     //user  kingdom name,   kingdom flag,   money,  farm,   troops
     var user = ["user",     "flag.jpg",     0,      1,      0];
     //farm gold/s, upgrade price
@@ -159,6 +169,7 @@
         if(user[2]<farm[1])return;
         farm[0]+=10;
         user[3]+=1;
+        user[2]-=farm[1];
         farm[1]*=3;
       }
 
